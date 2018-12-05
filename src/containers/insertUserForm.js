@@ -90,7 +90,7 @@ class InsertUserForm extends React.Component {
             this.state.selectedCurrencies.map((selectedCurrency, index) => (
               <CurrencyWrapper>
                 <Select children={values} onChange={(e) => { this.handleCurrencyChange(e, index)}} value={selectedCurrency} />
-                <Button variant="contained" color="blue" onClick={() => {
+                <Button variant="contained" color="default" onClick={() => {
                   this.handleDeleteCurrency(index);
                 }}>
                   Delete Currency
