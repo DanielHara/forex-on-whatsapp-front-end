@@ -5,6 +5,10 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
 
+const CurrencyWrapper = styled.div`
+  padding: 5px;
+`;
+
 const ButtonWrapper = styled.div`
   padding: 5px;
 `;
@@ -49,6 +53,14 @@ class InsertUserForm extends React.Component {
     })
   };
 
+  handleDeleteCurrency = (index) => {
+    const newSelectedCurrencies = this.state.selectedCurrencies.slice();
+    newSelectedCurrencies.splice(index, 1);
+    this.setState({
+      selectedCurrencies: newSelectedCurrencies,
+    });
+  }
+
   handleButtonClicked = () => {
     const outputString = `name: ${this.state.name}, phoneNumber: ${this.state.phoneNumber}, selectedCurrencies: ${this.state.selectedCurrencies}`;
     alert(outputString);
@@ -76,7 +88,14 @@ class InsertUserForm extends React.Component {
         <div>
           {
             this.state.selectedCurrencies.map((selectedCurrency, index) => (
-              <Select children={values} onChange={(e) => { this.handleCurrencyChange(e, index)}} value={selectedCurrency} />
+              <CurrencyWrapper>
+                <Select children={values} onChange={(e) => { this.handleCurrencyChange(e, index)}} value={selectedCurrency} />
+                <Button variant="contained" color="blue" onClick={() => {
+                  this.handleDeleteCurrency(index);
+                }}>
+                  Delete Currency
+                </Button>
+              </CurrencyWrapper>
             ))
           }
         </div>
