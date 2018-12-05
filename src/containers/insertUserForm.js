@@ -4,6 +4,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
+import { currencies } from '../constants';
 
 const CurrencyWrapper = styled.div`
   padding: 5px;
@@ -12,8 +13,6 @@ const CurrencyWrapper = styled.div`
 const ButtonWrapper = styled.div`
   padding: 5px;
 `;
-
-const currencies = ['BTC', 'USD', 'CHF', 'GBP'];
 
 class InsertUserForm extends React.Component {
   constructor(props) {
