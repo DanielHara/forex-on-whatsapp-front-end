@@ -1,6 +1,7 @@
 import React from 'react';
 import InsertUserForm from './containers/insertUserForm';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 
 
 const FormGrid = (props) => (
@@ -20,6 +21,9 @@ const App = () => (
   <FormGrid>
     <Title />
     <InsertUserForm />
+    <Button href="/">
+      Back to Home
+    </Button>
   </FormGrid>
 );
 

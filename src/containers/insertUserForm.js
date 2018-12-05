@@ -13,7 +13,6 @@ const ButtonWrapper = styled.div`
   padding: 5px;
 `;
 
-
 const currencies = ['BTC', 'USD', 'CHF', 'GBP'];
 
 class InsertUserForm extends React.Component {
