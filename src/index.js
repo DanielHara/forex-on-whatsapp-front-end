@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import Home from './Home';
+import ListOfClients from './ListOfClients'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
@@ -11,6 +12,7 @@ ReactDOM.render(
     <Switch>
         <Route path="/" exact={true} component={Home} />
         <Route path="/insertuser" component={App} />
+        <Route path="/listofclients" component={ListOfClients} />
     </Switch>
   </BrowserRouter>
   , document.getElementById('root')

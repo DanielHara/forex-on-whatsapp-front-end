@@ -7,7 +7,7 @@ const Home = () =>
     <Button href="/insertuser" >
       Go to Insert Client page
     </Button>
-    <Button href="">
+    <Button href="/listofclients">
       Go To Client List
     </Button>
   </div>;
