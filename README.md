@@ -2,7 +2,7 @@
 
 This is a simple app built on React-Redux, but includes the most used features of React-Redux, such as routing, state management, store, mapStateToProps and mapDispatchToProps.
 
-This will be the front end of my Forex On WhatsApp application: 
+This will be the front end of my Forex On WhatsApp application: https://github.com/DanielHara/forex-on-whatsapp
 
 This app is still just saving the users on Redux store, but I am already working on hitting the endpoints of my API running locally. I just need to solve some CORS issues I am having.
 
