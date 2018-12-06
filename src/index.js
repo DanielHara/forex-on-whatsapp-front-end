@@ -1,21 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import reducer from './reducer';
 import './index.css';
-import App from './App';
+import InsertClientPage from './InsertClientPage';
 import Home from './Home';
 import ListOfClients from './ListOfClients'
 import * as serviceWorker from './serviceWorker';
 
+const store = createStore(reducer);
+
 ReactDOM.render(
-  <BrowserRouter>
-    <Switch>
+  <Provider store={store}>
+    <BrowserRouter>
+      <Switch>
         <Route path="/" exact={true} component={Home} />
-        <Route path="/insertuser" component={App} />
+        <Route path="/insertuser" component={InsertClientPage} />
         <Route path="/listofclients" component={ListOfClients} />
-    </Switch>
-  </BrowserRouter>
-  , document.getElementById('root')
+      </Switch>
+    </BrowserRouter>
+  </Provider>,
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

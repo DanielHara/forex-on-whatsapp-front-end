@@ -2,6 +2,7 @@ import React from 'react';
 import InsertUserForm from './containers/insertUserForm';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import ListOfClients from './ListOfClients';
 
 
 const FormGrid = (props) => (
@@ -17,14 +18,17 @@ const FormGrid = (props) => (
 
 const Title = () => <div>Enter your new client</div>
 
-const App = () => (
-  <FormGrid>
-    <Title />
-    <InsertUserForm />
-    <Button href="/">
-      Back to Home
-    </Button>
-  </FormGrid>
+const InsertClientPage = () => (
+  <div>
+    <FormGrid>
+      <Title />
+      <InsertUserForm />
+      <Button href="/">
+        Back to Home
+      </Button>
+    </FormGrid>
+    <ListOfClients />
+  </div>
 );
 
-export default App;
+export default InsertClientPage;
