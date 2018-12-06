@@ -4,8 +4,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
+import { isValidBrazilianNumber } from '../utils/phoneNumberUtils';
 import { connect } from 'react-redux';
 import { currencies } from '../constants';
+
 
 const CurrencyWrapper = styled.div`
   padding: 5px;
@@ -61,10 +63,16 @@ class InsertUserForm extends React.Component {
   }
 
   handleButtonClicked = () => {
+    const { name, phoneNumber, selectedCurrencies } = this.state;
+    if (!isValidBrazilianNumber(phoneNumber)) {
+      alert('Invalid Phone Number!');
+      return;
+    }
+
     const newClient = {
-      name: this.state.name,
-      phoneNumber: this.state.phoneNumber,
-      selectedCurrencies: this.state.selectedCurrencies,
+      name: name,
+      phoneNumber: phoneNumber,
+      selectedCurrencies: selectedCurrencies,
     }
 
     this.props.addClient(newClient);

@@ -97,13 +97,4 @@ export const mapStateToProps = (state) => ({
   number: numberSelector(state)
 });
 
-export const mapDispatchToProps = (dispatch) => ({
-  dispatchAction: () => {
-    dispatch({
-      type: "GO_TO_REAL_DATA",
-      client: "Hara-San",
-    });
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ListOfClients);
+export default connect(mapStateToProps, null)(ListOfClients);
