@@ -5,6 +5,7 @@ import namor from 'namor';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
 import { currencies } from './constants';
+import { clientsSelector, numberSelector } from './selectors';
 
 
 const range = len => {
@@ -37,11 +38,16 @@ export function makeData(len = 5553) {
 
 class ListOfClients extends React.Component {
   render() {
+    console.log('this.props.clients:')
     console.log(this.props.clients);
     return (
       <div>
         <ReactTable
-          data={this.props.clients}
+          data={this.props.clients && this.props.clients.map((client) => ({
+            name: client.name,
+            phoneNumber: client.phoneNumber,
+            selectedCurrencies: client.selectedCurrencies.reduce((el, text) => `${text}, ${el}`),
+          }))}
           columns={[
           {
             Header: "Client",
@@ -81,12 +87,8 @@ class ListOfClients extends React.Component {
 };
 
 export const mapStateToProps = (state) => ({
-  clients: state.reducer.clients.map((client) => ({
-    name: client.name,
-    phoneNumber: client.phoneNumber,
-    selectedCurrencies: client.selectedCurrencies.reduce((el, text) => `${text}, ${el}`),
-  })),
-  number: state.reducer.number,
+  clients: clientsSelector(state),
+  number: numberSelector(state)
 });
 
 export const mapDispatchToProps = (dispatch) => ({

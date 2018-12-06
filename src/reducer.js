@@ -7,7 +7,7 @@ const defaultState = {
 
 export const reducer = (state = defaultState, action) => {
   switch(action.type) {
-    case "ADD_CLIENT":
+    case 'ADD_CLIENT':
       const clients = state.clients ? state.clients : [];
       clients.push(action.client);
       const nextState = {
