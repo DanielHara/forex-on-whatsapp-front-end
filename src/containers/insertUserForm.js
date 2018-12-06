@@ -4,6 +4,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import { currencies } from '../constants';
 
 const CurrencyWrapper = styled.div`
@@ -61,7 +62,14 @@ class InsertUserForm extends React.Component {
 
   handleButtonClicked = () => {
     const outputString = `name: ${this.state.name}, phoneNumber: ${this.state.phoneNumber}, selectedCurrencies: ${this.state.selectedCurrencies}`;
+    const newClient = {
+      name: this.state.name,
+      phoneNumber: this.state.phoneNumber,
+      selectedCurrencies: this.state.selectedCurrencies,
+    }
+    
     alert(outputString);
+    this.props.addClient(newClient);
   };
 
   render() {
@@ -112,4 +120,13 @@ class InsertUserForm extends React.Component {
   }
 }
 
-export default InsertUserForm;
+export const mapDispatchToProps = (dispatch) => ({
+  addClient: (client) => {
+    dispatch({
+      type: "ADD_CLIENT",
+      client: client,
+    });
+  },
+});
+
+export default connect(null, mapDispatchToProps)(InsertUserForm);

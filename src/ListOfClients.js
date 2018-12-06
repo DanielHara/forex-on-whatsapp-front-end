@@ -37,30 +37,31 @@ export function makeData(len = 5553) {
 
 class ListOfClients extends React.Component {
   render() {
+    console.log(this.props.clients);
     return (
       <div>
         <ReactTable
-          data={makeData()}
+          data={this.props.clients}
           columns={[
           {
             Header: "Client",
             columns: [
-          {
-            Header: "Name",
-            accessor: "name"
-          },
-          {
-            Header: "Phone Number",
-            accessor: "phoneNumber"
-          },
-          {
-            Header: "Currencies",
-            accessor: "currencies",
-          }],
-        }]}
-        defaultPageSize={10}
-        className="-striped -highlight"
-      />
+            {
+              Header: "Name",
+              accessor: "name"
+            },
+            {
+              Header: "Phone Number",
+              accessor: "phoneNumber"
+            },
+            {
+              Header: "Currencies",
+              accessor: "selectedCurrencies",
+            }],
+          }]}
+          defaultPageSize={10}
+          className="-striped -highlight"
+        />
         <Button href="/">
           Back to Home
         </Button>
@@ -81,6 +82,7 @@ class ListOfClients extends React.Component {
 
 export const mapStateToProps = (state) => ({
   clients: state.reducer.clients,
+  number: state.reducer.number,
 });
 
 export const mapDispatchToProps = (dispatch) => ({
