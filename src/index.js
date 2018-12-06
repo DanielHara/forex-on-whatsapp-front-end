@@ -7,7 +7,6 @@ import reducer from './reducer';
 import './index.css';
 import InsertClientPage from './InsertClientPage';
 import Home from './Home';
-import ListOfClients from './ListOfClients'
 import * as serviceWorker from './serviceWorker';
 
 const store = createStore(reducer);
@@ -18,7 +17,6 @@ ReactDOM.render(
       <Switch>
         <Route path="/" exact={true} component={Home} />
         <Route path="/insertuser" component={InsertClientPage} />
-        <Route path="/listofclients" component={ListOfClients} />
       </Switch>
     </BrowserRouter>
   </Provider>,

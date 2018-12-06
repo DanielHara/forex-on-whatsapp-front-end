@@ -81,7 +81,11 @@ class ListOfClients extends React.Component {
 };
 
 export const mapStateToProps = (state) => ({
-  clients: state.reducer.clients,
+  clients: state.reducer.clients.map((client) => ({
+    name: client.name,
+    phoneNumber: client.phoneNumber,
+    selectedCurrencies: client.selectedCurrencies.reduce((el, text) => `${text}, ${el}`),
+  })),
   number: state.reducer.number,
 });
 

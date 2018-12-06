@@ -61,14 +61,12 @@ class InsertUserForm extends React.Component {
   }
 
   handleButtonClicked = () => {
-    const outputString = `name: ${this.state.name}, phoneNumber: ${this.state.phoneNumber}, selectedCurrencies: ${this.state.selectedCurrencies}`;
     const newClient = {
       name: this.state.name,
       phoneNumber: this.state.phoneNumber,
       selectedCurrencies: this.state.selectedCurrencies,
     }
-    
-    alert(outputString);
+
     this.props.addClient(newClient);
   };
 

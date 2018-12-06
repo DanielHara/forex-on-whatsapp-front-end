@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 
 const defaultState = {
   clients: [],
+  number: 0,
 };
 
 export const reducer = (state = defaultState, action) => {
