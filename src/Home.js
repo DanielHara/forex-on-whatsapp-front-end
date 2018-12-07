@@ -10,6 +10,9 @@ const Home = () =>
       <Button href="/insertuser" >
         Go to Insert Client page
       </Button>
+      <Button href="/currentprice" >
+        Go To Current Price page
+      </Button>
     </div>
   </div>;
 

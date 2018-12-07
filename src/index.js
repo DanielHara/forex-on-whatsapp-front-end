@@ -6,6 +6,7 @@ import { createStore } from 'redux';
 import reducer from './reducer';
 import './index.css';
 import InsertClientPage from './InsertClientPage';
+import CurrentPriceForm from './containers/CurrentPriceForm';
 import Home from './Home';
 import * as serviceWorker from './serviceWorker';
 
@@ -17,6 +18,7 @@ ReactDOM.render(
       <Switch>
         <Route path="/" exact={true} component={Home} />
         <Route path="/insertuser" component={InsertClientPage} />
+        <Route path="/currentprice" component={CurrentPriceForm} />
       </Switch>
     </BrowserRouter>
   </Provider>,
