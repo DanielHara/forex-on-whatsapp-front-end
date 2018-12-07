@@ -3,25 +3,8 @@ import Button from '@material-ui/core/Button';
 import { CurrencyList } from '../components/CurrencyList';
 import { HomeButton } from '../components/HomeButton';
 import { FormGrid } from '../InsertClientPage';
+import { getBitcoinPrices } from '../apis/coinDeskApi';
 
-const COINDESK_ENDPOINT = 'https://api.coindesk.com/v1/bpi/currentprice.json';
-
-const fetchCurrentPrice = () => fetch(COINDESK_ENDPOINT)
-                                .then(function(response) {
-                                  return response.json();
-                                });
-
-async function getPrices() {
-  const response = await fetchCurrentPrice();
-  const responsePrices = response.bpi;
-
-  const prices = [];
-  Object.keys(responsePrices).forEach((key) => {
-    prices.push(responsePrices[key]);
-  });
-
-  return prices;
-}
 
 class CurrentPriceForm extends React.Component {
   constructor(props) {
@@ -37,7 +20,7 @@ class CurrentPriceForm extends React.Component {
   }
 
   async handleUpdateButtonClicked() {
-    const prices = await getPrices();
+    const prices = await getBitcoinPrices();
     this.setState({ prices: prices });
   }
 
@@ -46,11 +29,12 @@ class CurrentPriceForm extends React.Component {
 
     return (
       <FormGrid>
-        <div>
-          <Button onClick={this.handleUpdateButtonClicked}>
-            Update Price!
-          </Button>
-        </div>
+        <Button >
+          Change to EUR!
+        </Button>
+        <Button onClick={this.handleUpdateButtonClicked}>
+          Update Price!
+        </Button>
         <div align='center'>
           1 Bitcoin is worth:
         </div>
