@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import ListOfClients from './ListOfClients';
 
 
-const FormGrid = (props) => (
+export const FormGrid = (props) => (
   <Grid container
     spacing={0}
     direction="column"

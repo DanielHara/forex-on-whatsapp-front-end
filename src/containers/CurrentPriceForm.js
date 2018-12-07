@@ -1,5 +1,8 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
+import { CurrencyList } from '../components/CurrencyList';
+import { HomeButton } from '../components/HomeButton';
+import { FormGrid } from '../InsertClientPage';
 
 const COINDESK_ENDPOINT = 'https://api.coindesk.com/v1/bpi/currentprice.json';
 
@@ -41,24 +44,19 @@ class CurrentPriceForm extends React.Component {
   render() {
     const { prices } = this.state;
 
-    const priceTags = prices ? prices.map((price) => (
-      <div>
-        { `${price.rate_float.toFixed(2)} ${price.code}` }
-      </div>
-    )) : [];
-
     return (
-      <div>
+      <FormGrid>
         <div>
           <Button onClick={this.handleUpdateButtonClicked}>
             Update Price!
           </Button>
         </div>
-        <div>
+        <div align='center'>
           1 Bitcoin is worth:
-          { priceTags }
         </div>
-      </div>
+        <CurrencyList prices={prices}/>
+        <HomeButton />
+      </FormGrid>
     );
   }
 }
