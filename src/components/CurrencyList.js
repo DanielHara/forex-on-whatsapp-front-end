@@ -15,8 +15,6 @@ export const ListItemLink = (props) => (
 
 export const CurrencyList = (props) => {
   const { prices } = props;
-  console.log('CurrencyList:');
-  console.log(prices);
   return (
     <div>
       <List component="nav">
@@ -32,36 +30,3 @@ export const CurrencyList = (props) => {
     </div>
   );
 }
-
-
-/*
-export const CurrencyList = () => (
-  <div>
-    <List component="nav">
-      <ListItem button>
-        <ListItemIcon>
-          <CountryFlag currencyCode="USD"/>
-        </ListItemIcon>
-        <ListItemText primary="3297.98 USD" />
-      </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          <DraftsIcon />
-        </ListItemIcon>
-        <ListItemText primary="Drafts" />
-      </ListItem>
-    </List>
-    <Divider />
-    <List component="nav">
-      <ListItem button>
-        <ListItemText primary="Trash" />
-      </ListItem>
-      <ListItemLink href="#simple-list">
-        <ListItemText primary="Spam" />
-      </ListItemLink>
-    </List>
-  </div>
-)
-*/
-
-
