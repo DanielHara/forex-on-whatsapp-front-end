@@ -9,6 +9,13 @@ export const getCountryCodeFromCurrencyCode = (currencyCode) => {
     case 'GBP':
       return 'GB';
     default:
-      return getAllISOByCurrencyOrSymbol('currency', currencyCode)[0];
+      let countryCode;
+      try {
+        countryCode = getAllISOByCurrencyOrSymbol('currency', currencyCode)[0];
+      }
+      catch {
+        countryCode = 'US';
+      }
+      return countryCode;
   }
 };

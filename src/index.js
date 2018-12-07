@@ -10,6 +10,10 @@ import CurrentPriceForm from './containers/CurrentPriceForm';
 import Home from './Home';
 import * as serviceWorker from './serviceWorker';
 
+var dotenv = require('dotenv');
+dotenv.load();
+
+
 const store = createStore(reducer);
 
 ReactDOM.render(

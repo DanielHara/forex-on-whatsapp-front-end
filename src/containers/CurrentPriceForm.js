@@ -4,6 +4,7 @@ import { CurrencyList } from '../components/CurrencyList';
 import { HomeButton } from '../components/HomeButton';
 import { FormGrid } from '../InsertClientPage';
 import { getBitcoinPrices } from '../apis/coinDeskApi';
+import { getEurPrices } from '../apis/fixerApi';
 
 
 class CurrentPriceForm extends React.Component {
@@ -11,25 +12,29 @@ class CurrentPriceForm extends React.Component {
     super(props);
     this.state = {
       prices: [],
+      euroPrices: [],
     };
     this.handleUpdateButtonClicked = this.handleUpdateButtonClicked.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.handleUpdateButtonClicked();
   }
 
   async handleUpdateButtonClicked() {
     const prices = await getBitcoinPrices();
-    this.setState({ prices: prices });
+    const euroPrices = await getEurPrices();
+    this.setState({
+      prices: prices,
+      euroPrices: euroPrices,
+    });
   }
 
   render() {
-    const { prices } = this.state;
-
+    const { prices, euroPrices} = this.state;
     return (
       <FormGrid>
-        <Button >
+        <Button onClick={getEurPrices}>
           Change to EUR!
         </Button>
         <Button onClick={this.handleUpdateButtonClicked}>
@@ -39,6 +44,7 @@ class CurrentPriceForm extends React.Component {
           1 Bitcoin is worth:
         </div>
         <CurrencyList prices={prices}/>
+        <CurrencyList prices={euroPrices} />
         <HomeButton />
       </FormGrid>
     );
