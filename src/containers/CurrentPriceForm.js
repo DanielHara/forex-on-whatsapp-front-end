@@ -68,6 +68,7 @@ class CurrentPriceForm extends React.Component {
         <div align='center'>
           { base === EUR ? "1 EURO is worth:" : "1 BITCOIN is worth" }
         </div>
+        { base === BTC && "Powered by CoinDesk" }
         <CurrencyList prices={prices}/>
         <HomeButton />
       </FormGrid>
