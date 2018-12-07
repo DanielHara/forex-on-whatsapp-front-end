@@ -20,17 +20,6 @@ async function getPrices() {
   return prices;
 }
 
-
-async function printPrice() {
-  const prices = await getPrices();
-  console.log(`prices = `);
-  console.log(prices);
-}
-
-
-
-
-
 class CurrentPriceForm extends React.Component {
   constructor(props) {
     super(props);
@@ -38,6 +27,10 @@ class CurrentPriceForm extends React.Component {
       prices: [],
     };
     this.handleUpdateButtonClicked = this.handleUpdateButtonClicked.bind(this);
+  }
+
+  componentDidMount() {
+    this.handleUpdateButtonClicked();
   }
 
   async handleUpdateButtonClicked() {
@@ -48,7 +41,6 @@ class CurrentPriceForm extends React.Component {
   render() {
     const { prices } = this.state;
 
-    // CUIDADO: prices não é um array: Tem de iterar pelas keys.
     const priceTags = prices ? prices.map((price) => (
       <div>
         { `${price.rate_float.toFixed(2)} ${price.code}` }
