@@ -28,8 +28,8 @@ const mockedResponse = {
 };
 
 export async function getEurPrices() {
-  // const response = await fetchCurrentPrices();
-  const response = mockedResponse;
+  const response = await fetchCurrentPrices();
+  // const response = mockedResponse;
   const responseRates = response.rates;
   const responsePrices = [];
 
