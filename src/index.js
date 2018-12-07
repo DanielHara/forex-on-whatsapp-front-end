@@ -13,7 +13,6 @@ import * as serviceWorker from './serviceWorker';
 var dotenv = require('dotenv');
 dotenv.load();
 
-
 const store = createStore(reducer);
 
 ReactDOM.render(

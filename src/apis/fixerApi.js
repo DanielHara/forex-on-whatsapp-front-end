@@ -11,13 +11,28 @@ const fetchCurrentPrices = () => fetch(fixerUrl)
                                    return response.json();
                                  });
 
+const mockedResponse = {
+  "success": true,
+  "timestamp": 1519296206,
+  "base": "EUR",
+  "date": "2018-12-07",
+  "rates": {
+      "AUD": 1.566015,
+      "CAD": 1.560132,
+      "CHF": 1.154727,
+      "CNY": 7.827874,
+      "GBP": 0.882047,
+      "JPY": 132.360679,
+      "USD": 1.23396,
+  }
+};
+
 export async function getEurPrices() {
-  console.log('FIXER_API_KEY:');
-  console.log(FIXER_API_KEY);
-  console.log(process.env);
-  const response = await fetchCurrentPrices();
+  // const response = await fetchCurrentPrices();
+  const response = mockedResponse;
   const responseRates = response.rates;
   const responsePrices = [];
+
   if (responseRates) {
     Object.keys(responseRates).forEach((key) => {
       responsePrices.push({
@@ -26,6 +41,6 @@ export async function getEurPrices() {
       })
     });
   }
-  console.log(responsePrices);
+
   return responsePrices;
 }
