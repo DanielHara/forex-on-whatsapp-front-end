@@ -1,5 +1,5 @@
 import React from 'react';
-import InsertUserForm from './containers/insertUserForm';
+import InsertUserForm from './InsertUserForm';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import ListOfClients from './ListOfClients';

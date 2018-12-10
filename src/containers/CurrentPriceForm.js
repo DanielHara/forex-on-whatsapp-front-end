@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import { CurrencyList } from '../components/CurrencyList';
 import { HomeButton } from '../components/HomeButton';
-import { FormGrid } from '../InsertClientPage';
+import { FormGrid } from './InsertClientPage';
 import { getBitcoinPrices } from '../apis/coinDeskApi';
 import { getEurPrices } from '../apis/fixerApi';
 

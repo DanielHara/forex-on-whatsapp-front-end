@@ -4,8 +4,8 @@ import "react-table/react-table.css";
 import namor from 'namor';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
-import { currencies } from './constants';
-import { clientsSelector, numberSelector } from './selectors';
+import { currencies } from '../constants';
+import { clientsSelector, numberSelector } from '../selectors';
 
 
 const range = len => {
