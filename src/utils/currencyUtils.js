@@ -14,7 +14,7 @@ export const getCountryCodeFromCurrencyCode = (currencyCode) => {
         countryCode = getAllISOByCurrencyOrSymbol('currency', currencyCode)[0];
       }
       catch {
-        countryCode = 'US';
+        countryCode = undefined;
       }
       return countryCode;
   }

@@ -16,7 +16,16 @@ export const CountryFlag = (props) => {
                 width="20"/>;
   }
 
+  if (!currencyCode) {
+    return <div></div>;
+  }
+
   countryCode = getCountryCodeFromCurrencyCode(currencyCode)
+
+  if (!countryCode) {
+    return <div></div>;
+  }
+
   return <img src={getCountryFlagsURL(countryCode)}
               alt={`Country Code: ${countryCode}`}
               align="right"
