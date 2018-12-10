@@ -43,5 +43,10 @@ describe('CountryFlag', () => {
       const countryFlag = shallow(<CountryFlag currencyCode={mockedCurrencyCode} />);
       expect(countryFlag.contains(<img />)).toBe(false);
     });
+
+    it('if neither currencyCode nor countryCode are provided', () => {
+      const countryFlag = shallow(<CountryFlag />);
+      expect(countryFlag.contains(<img />)).toBe(false);
+    });
   });
 });
