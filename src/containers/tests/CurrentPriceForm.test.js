@@ -4,8 +4,23 @@ import CurrentPriceForm from '../CurrentPriceForm';
 import { EUR, BTC } from '../CurrentPriceForm';
 import { ExpansionPanelActions } from '@material-ui/core';
 
+const coinDeskApiModule = require('apis/coinDeskApi');
+const fixerApiModule = require('apis/fixerApi');
+
+const mockedBitcoinPrices = 'mockedBitcoinPrices';
+const mockedEurPrices = 'mockedEurPrices';
 
 const mockedHandleUpdateButtonClicked = jest.fn();
+const mockedGetBitcoinPrices = jest.fn(() => new Promise((resolve, reject) => {
+  resolve(mockedBitcoinPrices);
+}));
+const mockedGetEurPrices = jest.fn(() => new Promise((resolve, reject) => {
+  resolve(mockedEurPrices);
+}));
+
+coinDeskApiModule.getBitcoinPrices = mockedGetBitcoinPrices;
+fixerApiModule.getEurPrices = mockedGetEurPrices;
+
 
 describe('componentDidMount', () => {
   it('should call handleUpdatebuttonClicked', () => {
@@ -63,6 +78,44 @@ describe('handleToggleButtonClicked', () => {
     });
   });
 });
+
+describe('handleUpdateButtonClicked', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+  it('should call getBitcoinPrices when base is BTC and set state to received prices', async () => {
+    const currentPriceForm = shallow(<CurrentPriceForm />);
+    currentPriceForm.setState({
+      base: BTC
+    });
+
+    mockedGetEurPrices.mockClear();
+    mockedGetBitcoinPrices.mockClear();
+
+    await currentPriceForm.instance().handleUpdateButtonClicked();
+
+    expect(mockedGetBitcoinPrices).toHaveBeenCalled();
+    expect(mockedGetEurPrices).not.toHaveBeenCalled();
+    expect(currentPriceForm.state().prices).toBe(mockedBitcoinPrices);
+  });
+  it('should call getEurPrices when base is EUR and set state to received prices', async() => {
+    const currentPriceForm = shallow(<CurrentPriceForm />);
+    currentPriceForm.setState({
+      base: EUR
+    });
+
+    mockedGetEurPrices.mockClear();
+    mockedGetBitcoinPrices.mockClear();
+    
+    await currentPriceForm.instance().handleUpdateButtonClicked();
+
+    expect(mockedGetEurPrices).toHaveBeenCalled();
+    expect(mockedGetBitcoinPrices).not.toHaveBeenCalled();
+    expect(currentPriceForm.state().prices).toBe(mockedEurPrices);
+  });
+});
+
+
 
 describe('CurrentPriceForm', () => {
 
