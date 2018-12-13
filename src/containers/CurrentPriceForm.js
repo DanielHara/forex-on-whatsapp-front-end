@@ -7,9 +7,9 @@ import { getBitcoinPrices } from '../apis/coinDeskApi';
 import { getEurPrices } from '../apis/fixerApi';
 
 
-const BTC = 'BTC';
-const EUR = 'EUR';
-const defaultBase = BTC;
+export const BTC = 'BTC';
+export const EUR = 'EUR';
+export const defaultBase = BTC;
 
 class CurrentPriceForm extends React.Component {
   constructor(props) {
@@ -68,8 +68,8 @@ class CurrentPriceForm extends React.Component {
         <div align='center'>
           { base === EUR ? "1 EURO is worth:" : "1 BITCOIN is worth" }
         </div>
-        { base === BTC && "Powered by CoinDesk" }
         <CurrencyList prices={prices}/>
+        { base === BTC && "Powered by CoinDesk" }
         <HomeButton />
       </FormGrid>
     );

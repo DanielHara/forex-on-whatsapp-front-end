@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactTable from "react-table";
-import "react-table/react-table.css";
+import 'react-table/react-table.css';
 import namor from 'namor';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
@@ -8,7 +8,7 @@ import { currencies } from '../constants';
 import { clientsSelector, numberSelector } from '../selectors';
 
 
-const range = len => {
+const range = (len) => {
   const arr = [];
     for (let i = 0; i < len; i++) {
       arr.push(i);
@@ -23,7 +23,7 @@ const newPerson = () => {
     phoneNumber: `+${Math.random().toString().slice(2,11)}`,
     selectedCurrencies: currencies.sort(() => (0.5 - Math.random()))
                                   .slice(0, n)
-                                 .reduce((prev, current) => `${current}, ${prev}`),
+                                  .reduce((prev, current) => `${current}, ${prev}`),
   };
 };
 
